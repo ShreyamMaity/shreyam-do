@@ -23,7 +23,7 @@ parts:
       snapcraftctl build
     override-prime: |
       snapcraftctl prime
-      cp -r /usr/share/shreyam-do $SNAPCRAFT_PRIME/usr/share/
+      cp -r /usr/share/shreyam-do/ $SNAPCRAFT_PRIME/usr/share/
     stage-packages:
       - make
   make:

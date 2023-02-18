@@ -14,9 +14,11 @@ ARG PACKAGE_VERSION
 
 RUN chmod 755 /pkg/DEBIAN/postinst
 RUN mkdir -p /packages && \
-    dpkg-deb --build /pkg /packages/${PACKAGE_NAME}_${PACKAGE_VERSION}.deb && \
-    cd /pkg && \
-    snapcraft
+    dpkg-deb --build /pkg /packages/${PACKAGE_NAME}_${PACKAGE_VERSION}.deb 
+    # && \
+    # cd /pkg && \
+    # snapcraft
 
-CMD cp /packages/*.deb /build && \
-    cp /pkg/*.snap /build
+CMD cp /packages/*.deb /build
+#  && \
+#     cp /pkg/*.snap /build
