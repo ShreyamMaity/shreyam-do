@@ -28,7 +28,7 @@ parts:
       - make
   make:
     plugin: nil
-    source: https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/make/4.3-4ubuntu1/make_4.3.orig.tar.gz
+    source: https://ftp.gnu.org/gnu/make/make-4.3.tar.gz
     source-type: tar
     build-packages:
       - gettext
