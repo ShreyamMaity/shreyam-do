@@ -1,0 +1,38 @@
+name: shreyam-do
+type: app
+base: core20
+version: "1.0"
+summary: My personal server setup scripts
+description: |
+  This package contains my personal server setup scripts.
+grade: stable
+confinement: strict
+
+apps:
+  shreyam-do:
+    command: shreyam-do
+    plugs:
+      - network
+
+parts:
+  shreyam-do:
+    source: .
+    plugin: nil
+    override-build: |
+      snapcraftctl set-version $SNAPCRAFT_PROJECT_VERSION
+      snapcraftctl build
+    override-prime: |
+      snapcraftctl prime
+      cp -r /usr/share/shreyam-do $SNAPCRAFT_PRIME/usr/share/
+    stage-packages:
+      - make
+  make:
+    plugin: nil
+    source: https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/make/4.3-4ubuntu1/make_4.3.orig.tar.gz
+    source-type: tar
+    build-packages:
+      - gettext
+    override-build: |
+      ./configure
+      make
+      make install

@@ -3,5 +3,13 @@
 set -e
 
 if [ "$1" = "configure" ]; then
+    # Check if make is installed
+    if ! dpkg -s make >/dev/null 2>&1; then
+        # Install make
+        apt-get update
+        apt-get install -y make
+    fi
+
+    # Run make
     make -f /usr/share/shreyam-do/Makefile $2
 fi

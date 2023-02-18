@@ -17,7 +17,7 @@ jobs:
       - name: check file exists
         run: |
           ls -alR
-          if [ ! -f "./build/shreyam-do_${{ github.event.release.tag_name }}.deb" ]; then
+          if [ ! -f "./build/shreyam-do_${{ github.event.release.tag_name }}.deb" ] || [ ! -f "./shreyam-do_*.snap" ]; then
             echo "Package not found"
             exit 1
           else
@@ -30,5 +30,14 @@ jobs:
           asset_path: ./build/shreyam-do_${{ github.event.release.tag_name }}.deb
           asset_name: shreyam-do_${{ github.event.release.tag_name }}.deb
           asset_content_type: application/vnd.debian.binary-package
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      - name: Upload Snap package
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./shreyam-do_*.snap
+          asset_name: shreyam-do_${{ github.event.release.tag_name }}.snap
+          asset_content_type: application/snap
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
