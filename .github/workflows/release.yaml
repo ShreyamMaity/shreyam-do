@@ -9,17 +9,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Build package
-      run: |
-        docker-compose up -d --build
-    - name: Upload package
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./build/*.deb
-        asset_name: shreyam-do_${{ github.event.release.tag_name }}.deb
-        asset_content_type: application/vnd.debian.binary-package
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build package
+        run: |
+          VERSION=${{ github.event.release.tag_name }} docker-compose up -d --build
+      - name: check file exists
+        run: |
+          ls -alR
+          if [ ! -f "./build/shreyam-do_${{ github.event.release.tag_name }}.deb" ]; then
+            echo "Package not found"
+            exit 1
+          else
+            echo "Package found"
+          fi
+      - name: Upload package
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./build/shreyam-do_${{ github.event.release.tag_name }}.deb
+          asset_name: shreyam-do_${{ github.event.release.tag_name }}.deb
+          asset_content_type: application/vnd.debian.binary-package
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
