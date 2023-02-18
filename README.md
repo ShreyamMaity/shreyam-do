@@ -13,7 +13,7 @@
 
 > to install run `curl -sSL https://get.shreyamdo.shreyam.dev/ | bash`
 ---
-## `TLDR`: This tool is for me and I might not be able to help you with it.
+## `TLDR:` This tool is for me and it might not be useful for you. But if you want to use it, you can.
 
 
 ---
