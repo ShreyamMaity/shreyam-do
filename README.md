@@ -1,11 +1,19 @@
-
 # <p align=center> Shreyam-do </p>
+
+<p align="center">
+<img src=https://visitor-badge.glitch.me/badge?page_id=ShryeyamMaity.shreyam-do"/>
+<img src="https://img.shields.io/github/license/ShreyamMaity/shreyam-do"/>
+<img src="https://img.shields.io/github/stars/ShreyamMaity/shreyam-do"/>
+<img src="https://img.shields.io/github/forks/ShreyamMaity/shreyam-do"/>
+<img src="https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flat&color=BC4E99" alt="Star Badge"/>
+
+
+---
 > A CLI tool to simplify the process of configuring vms for me.  
 
 > to install run `curl -sSL https://get.shreyamdo.shreyam.dev/ | bash`
-
 ---
-## TLDR: This tool is for me and I might not be able to help you with it.
+## `TLDR`: This tool is for me and I might not be able to help you with it.
 
 
 ---
