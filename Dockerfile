@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 RUN apt-get update && \
     apt-get clean && \
-    apt-get install -y snapcraft dpkg-dev build-essential && \
+    # apt-get install -y snapcraft dpkg-dev build-essential && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /pkg
