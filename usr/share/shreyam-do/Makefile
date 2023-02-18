@@ -88,6 +88,7 @@ build-dpkg:
 		echo "Dpkg built" ; \
 	fi
 
+# creates a symlink for the file name passed as argument in nginx sites-enabled
 symLink:
 	@if [ -z "$(word 2, $(MAKECMDGOALS))" ]; then \
 		echo "Usage: make symLink <file-name>" ; \
