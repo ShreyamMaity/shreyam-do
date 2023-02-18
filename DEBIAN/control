@@ -1,0 +1,6 @@
+Package: shreyam-do
+Version: 1.0
+Architecture: all
+Maintainer: Shreyam Maity <rey@shreyam.dev>
+Description: A package that contains my personal server setup scripts
+Pre-Depends: make

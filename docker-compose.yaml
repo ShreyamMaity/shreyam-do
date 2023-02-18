@@ -1,0 +1,10 @@
+version: "3"
+services:
+  build:
+    build:
+      context: .
+      args:
+        PACKAGE_NAME: ${PACKAGE_NAME:-shreyam-do}
+        PACKAGE_VERSION: ${VERSION:-1.0.0}
+    volumes:
+      - ./build:/build

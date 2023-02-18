@@ -1,0 +1,3 @@
+#!/bin/bash
+
+make -f /usr/share/shreyam-do/Makefile "$@"
