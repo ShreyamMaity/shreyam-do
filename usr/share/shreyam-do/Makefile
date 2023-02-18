@@ -95,6 +95,7 @@ symLink:
 	else \
 		echo "Creating symlink" && \
 		sudo mv /etc/nginx/sites-available/$(word 2, $(MAKECMDGOALS)) && \
+		cd /etc/nginx/sites-available && \
 		sudo ln -s /etc/nginx/sites-available/$(word 2, $(MAKECMDGOALS)) /etc/nginx/sites-enabled/$(word 2, $(MAKECMDGOALS)) && \
 		sudo nginx -t && \
 		sudo systemctl restart nginx && \
