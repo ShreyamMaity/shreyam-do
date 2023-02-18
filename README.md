@@ -8,7 +8,7 @@
 ## TLDR: This tool is for me and I might not be able to help you with it.
 
 
-
+---
 ### Commands Available
 
 - `shreyam-do doker-setup` - installs docker and docker-compose on the vm and enables http and https ports from firewall
