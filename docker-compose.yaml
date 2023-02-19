@@ -1,6 +1,6 @@
 version: "3"
 services:
-  build:
+  shreyam-do:
     build:
       context: .
       args:
@@ -8,3 +8,28 @@ services:
         PACKAGE_VERSION: ${VERSION:-1.0.0}
     volumes:
       - ./build:/build
+  tests:
+    image: ubuntu:22.04
+    volumes:
+      - ./build:/build
+    environment:
+      - LC_ALL=C.UTF-8
+      - LANG=C.UTF-8
+      - PACKAGE_NAME=${PACKAGE_NAME:-shreyam-do}
+      - VERSION=${VERSION:-1.0.0}
+    working_dir: /tmp
+    depends_on:
+      - shreyam-do
+    profiles:
+      - test
+    command: sh -c '
+      set -e;
+      apt-get update;
+      apt-get install -y make;
+      cd /build;
+      ls -l;
+      dpkg -i /build/${PACKAGE_NAME}_${VERSION}.deb;
+      shreyam-do -v;
+      shreyam-do -h;
+      shreyam-do test;
+      shreyam-do'

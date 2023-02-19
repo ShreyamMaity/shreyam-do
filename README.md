@@ -17,6 +17,30 @@
 
 
 ---
+
+### Options
+```dotnetcli
+shreyam-do - Shreyam's setup scripts
+
+Usage: shreyam-do [options]
+
+Options:
+   [command]         Run a specific setup script
+   -h, --help        Display this help message
+   -v, --version     Display version information
+   -s, --setup       Set up the system with all the required packages
+   -r, --remove      Remove all installed packages
+```
+---
+### How to use
+
+- `shreyam-do -s` - installs all the required packages on a fresh vm and configure with npm, zsh, autosuggestions etc.
+- `shreyam-do -r` - removes all the packages installed by the tool
+- `shreyam-do -v` - displays the version of the tool
+- `shreyam-do -h` - displays the help message and the options available
+- `shreyam-do <command>` - runs the specific command
+
+---
 ### Commands Available
 
 - `shreyam-do doker-setup` - installs docker and docker-compose on the vm and enables http and https ports from firewall
@@ -25,3 +49,16 @@
 - `shreyam-do ssl-cert <domain>` - generates ssl certificate for the domain from letsencrypt and saves it in `/etc/letsencrypt/live/<domain>`
 - `shreyam-do open-ports` - opens necessary ports for nginx on firewall  
 - `shreyam-do symLink <conf-file>` - creates a symlink of the conf file in nginx 
+
+---
+### How to contribute
+- Create an issue if you find any bug or want to suggest a feature
+- Fork the repo and create a PR if you want to contribute
+
+---
+### License
+#### Apache License 2.0
+---
+### Author
+#### [Shreyam Maity](https://shreyam.dev)
+---

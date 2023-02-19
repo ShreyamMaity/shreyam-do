@@ -1,3 +1,67 @@
 #!/bin/bash
 
-make -f /usr/share/shreyam-do/Makefile "$@"
+set -e
+
+function print_usage {
+     make -s -f /usr/share/shreyam-do/Makefile help
+}
+
+function print_version {
+    echo "shreyam-do version 1.0.1"
+}
+
+function setup_all {
+    echo "Setting up all packages"
+    sudo apt-get update
+    sudo apt-get install -y git
+    sudo apt-get install -y vim
+    sudo apt-get install -y curl
+    sudo apt-get install -y zsh
+    sudo apt-get install -y tmux
+    sudo apt-get install -y npm
+    chsh -s $(which zsh)
+    which $SHELL
+    /usr/bin/zsh
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+    echo "Setup complete"
+}
+
+if [ $# -eq 0 ]; then
+    print_usage
+    exit 1
+fi
+
+while [[ $# -gt 0 ]]; do
+    key="$1"
+
+    case $key in
+    -h | --help)
+        print_usage
+        exit 0
+        ;;
+    -v | --version)
+        print_version
+        exit 0
+        ;;
+    -s | --setup)
+        setup_all
+        exit 0
+        ;;
+    -r | --remove)
+        echo "Removing all installed packages"
+        sudo apt-get remove -y tmux
+        sudo apt-get remove -y npm
+        exit 0
+        ;;
+    *)
+        # if the argument doesn't match any flag, execute the make command
+        make -s -f /usr/share/shreyam-do/Makefile "$@"
+        exit 0
+        ;;
+    esac
+    shift
+done
+
+print_usage
+exit 1

@@ -27,12 +27,8 @@ parts:
     stage-packages:
       - make
   make:
-    plugin: nil
+    plugin: autotools
     source: https://ftp.gnu.org/gnu/make/make-4.3.tar.gz
     source-type: tar
     build-packages:
       - gettext
-    override-build: |
-      ./configure
-      make
-      make install
